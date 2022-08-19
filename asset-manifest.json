@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/septem-consilium/static/css/main.2f0e671c.css",
+    "main.js": "/septem-consilium/static/js/main.4c305511.js",
+    "index.html": "/septem-consilium/index.html",
+    "main.2f0e671c.css.map": "/septem-consilium/static/css/main.2f0e671c.css.map",
+    "main.4c305511.js.map": "/septem-consilium/static/js/main.4c305511.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2f0e671c.css",
+    "static/js/main.4c305511.js"
+  ]
+}
