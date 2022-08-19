@@ -1,0 +1,12 @@
+.spinner-icon {
+  animation: spinner 1s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(45deg);
+  }
+  to {
+    transform: rotate(409deg);
+  }
+}

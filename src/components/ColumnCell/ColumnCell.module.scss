@@ -1,0 +1,132 @@
+@use "../../styles" as *;
+
+.cell {
+  color: font-color("200");
+  transition: height 200ms ease-in-out;
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+
+  &:hover &__toggle {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &--dragging {
+    opacity: 0;
+    height: 0;
+
+    background-color: red;
+
+    &:hover {
+      border: none;
+    }
+  }
+
+  &__toggle {
+    transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+
+    svg {
+      display: block;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &:hover &__text__complete + &__toggle {
+    opacity: 0.5;
+  }
+
+  &__text {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 42px;
+    padding: 0 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    &__complete {
+      opacity: 0.5;
+      text-decoration: line-through;
+    }
+  }
+
+  &__highlight {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: "";
+      z-index: -1;
+    }
+
+    &--color-1 {
+      padding: 0 10px;
+      color: font-color("950");
+      &::before {
+        background-color: blue(normal);
+        border: 1px solid blue(dark);
+        transform: skew(-10deg, 0.5deg);
+        inset: 8px 5px;
+      }
+    }
+
+    &--color-2 {
+      padding: 0 10px;
+      color: font-color("950");
+      &::before {
+        background-color: green(normal);
+        border: 1px solid green(dark);
+        transform: skew(-10deg, 0.5deg);
+        inset: 8px 5px;
+      }
+    }
+
+    &--color-3 {
+      padding: 0 10px;
+      color: blue(dark);
+      &::before {
+        background-color: yellow(light);
+        border: 1px solid blue(dark);
+        border-radius: 16px;
+        inset: 8px 0px;
+      }
+    }
+
+    &--color-4 {
+      padding: 0 10px;
+      color: green(dark);
+      &::before {
+        background-color: orange(light);
+        border: 1px solid green(dark);
+        border-radius: 16px;
+        inset: 8px 0px;
+      }
+    }
+
+    &--color-5 {
+      padding: 0 10px;
+      color: font-color("950");
+      &::before {
+        background-color: red(normal);
+        border: 1px solid red(dark);
+        border-radius: 5px;
+        inset: 8px 5px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1100px) {
+    &__toggle {
+      opacity: 1;
+      visibility: visible;
+      user-select: none;
+    }
+  }
+}

@@ -1,0 +1,80 @@
+.modal {
+  position: absolute;
+  top: 0;
+  left: 12px;
+  right: 12px;
+  z-index: 1000;
+  animation-name: modal-mount;
+  animation-duration: 400ms;
+  animation-fill-mode: forwards;
+  background-color: #bedee8;
+  border-radius: 5px;
+  padding: 32px 24px;
+  max-width: 512px;
+  margin: 5% auto;
+
+  &--dismount {
+    animation-name: modal-dismount;
+  }
+
+  @media only screen and (max-width: 1100px) {
+    margin: 64px auto;
+  }
+
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background-color: white;
+    opacity: 0.7;
+    z-index: 1000;
+
+    animation-name: overlay-mount;
+    animation-duration: 400ms;
+    animation-fill-mode: forwards;
+
+    &--dismount {
+      animation-name: overlay-dismount;
+    }
+  }
+}
+
+@keyframes modal-mount {
+  0% {
+    transform: translateY(20%);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modal-dismount {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(20%);
+    opacity: 0;
+  }
+}
+
+@keyframes overlay-mount {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes overlay-dismount {
+  0% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,110 @@
+@use "../../styles" as *;
+
+.edit-todo {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &:nth-of-type(6n + 1) {
+    margin-bottom: 42px;
+  }
+
+  &__options {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-direction: row-reverse;
+  }
+
+  &__date,
+  &__trash,
+  &__colors {
+    cursor: pointer;
+  }
+
+  svg {
+    height: 24px;
+    width: 24px;
+  }
+
+  &__colors {
+    height: 18px;
+    width: 18px;
+    border-radius: 100%;
+
+    &--color-0:hover,
+    &--color-1:hover,
+    &--color-2:hover,
+    &--color-3:hover,
+    &--color-4:hover,
+    &--color-5:hover,
+    &--active {
+      border: 2px solid rgba(0, 0, 0, 0.7);
+    }
+
+    &--color-0 {
+      background-color: transparent;
+      border: 2px solid rgba(0, 0, 0, 0.35);
+    }
+    &--color-1 {
+      background-color: blue(normal);
+    }
+    &--color-2 {
+      background-color: green(normal);
+    }
+    &--color-3 {
+      background-color: yellow(normal);
+    }
+    &--color-4 {
+      background-color: orange(normal);
+    }
+    &--color-5 {
+      background-color: red(normal);
+    }
+  }
+
+  &__text-input {
+    color: inherit;
+    line-height: 42px;
+    width: 100%;
+    background-color: transparent;
+    padding-right: 20px;
+    padding-left: 4px;
+    border: 0;
+    font-size: 24px;
+    &[type="text"] {
+      user-select: all;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &__complete {
+      opacity: 0.3;
+      text-decoration: line-through;
+    }
+
+    &--toggle {
+      width: 24px;
+      height: 24px;
+      margin-right: 4px;
+    }
+
+    &__wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__container {
+      margin-top: 25px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      overflow: clip;
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@use "../../styles" as *;
+
+.column-header {
+  font-size: 20px;
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgb(125, 125, 125);
+  height: 10px;
+  padding-top: 5px;
+  padding-bottom: 25px;
+  z-index: 10;
+
+  &__day {
+    font-weight: weight("regular");
+    opacity: 0.4;
+  }
+
+  &__date {
+    font-weight: weight(bold);
+  }
+
+  &__today {
+    color: blue(normal);
+    border-color: blue(normal);
+  }
+}

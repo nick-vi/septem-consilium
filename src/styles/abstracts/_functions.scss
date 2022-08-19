@@ -1,0 +1,32 @@
+@use "./variables" as *;
+
+@function size($scale) {
+  @return map-get($size, $scale);
+}
+@function font-color($shade) {
+  @return map-get($primary-color, $shade);
+}
+
+@function weight($weight-name) {
+  @return map-get($font-weights, $weight-name);
+}
+
+@function blue($shade) {
+  @return map-get($blue, $shade);
+}
+
+@function green($shade) {
+  @return map-get($green, $shade);
+}
+
+@function yellow($shade) {
+  @return map-get($yellow, $shade);
+}
+
+@function orange($shade) {
+  @return map-get($orange, $shade);
+}
+
+@function red($shade) {
+  @return map-get($red, $shade);
+} ;

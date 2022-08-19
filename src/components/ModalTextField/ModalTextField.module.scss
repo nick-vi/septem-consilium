@@ -1,0 +1,23 @@
+@use "../../styles" as *;
+
+.text-field {
+  display: flex;
+  flex-direction: column;
+  margin: 3px 0;
+
+  &__label {
+    font-size: 0.75rem;
+    color: font-color("300");
+  }
+
+  &__input {
+    background-color: transparent;
+    padding: 10px 0 12px;
+    border: none;
+    border-bottom: 1px solid font-color("500");
+
+    &::placeholder {
+      color: font-color("400");
+    }
+  }
+}

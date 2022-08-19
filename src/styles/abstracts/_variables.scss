@@ -1,0 +1,62 @@
+$primary-font: "Poppins", sans-serif;
+// $primary-font: 'Roboto', sans-serif;
+$secondary-font: "Roboto Slab", serif;
+
+$size: (
+  "1": 0.41rem,
+  "2": 0.512rem,
+  "3": 0.64rem,
+  "4": 0.8rem,
+  "5": 1rem,
+  "6": 1.25rem,
+  "7": 1.563rem,
+  "8": 1.953rem,
+  "9": 2.441rem,
+  "10": 3.052rem,
+);
+
+$primary-color: (
+  "100": hsl(0, 0%, 10%),
+  "200": hsl(0, 0%, 20%),
+  "300": hsl(0, 0%, 30%),
+  "500": hsl(0, 0%, 40%),
+  "950": hsl(0, 0%, 95%),
+);
+
+$font-weights: (
+  "regular": 400,
+  "medium": 500,
+  "bold": 700,
+);
+
+$blue: (
+  "saturated": hsl(194, 79%, 47%),
+  "light": hsl(194, 50%, 50%),
+  "normal": hsl(194, 100%, 33%),
+  "dark": hsl(195, 100%, 13%),
+);
+
+$green: (
+  "saturated": rgb(0, 242, 255),
+  "light": hsla(183, 50%, 53%),
+  "normal": hsla(183, 100%, 36%),
+  "dark": rgb(3, 63, 66),
+);
+
+$yellow: (
+  "light": hsla(58, 89%, 93%),
+  "normal": hsla(58, 89%, 50%),
+  "dark": rgb(167, 163, 33),
+);
+
+$orange: (
+  "light": hsla(29, 97%, 86%),
+  "normal": rgb(234, 168, 107),
+  "dark": rgb(174, 102, 35),
+);
+
+$red: (
+  "light": rgb(246, 166, 160),
+  "normal": hsla(4, 82%, 67%),
+  "dark": rgb(112, 24, 17),
+);
