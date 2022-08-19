@@ -41,7 +41,7 @@ const EditTodo = ({
 
   const handleDueDate = (date) => {
     setDate(date)
-    const payload = { todoId, dueDate: date.toISOString() }
+    const payload = { todoId, dueDate: date.toISOString(), column: undefined }
     dispatch(updateTodo(payload))
     setHasChanged(true)
   }
@@ -95,15 +95,12 @@ const EditTodo = ({
       )
     })
 
-  const renderDatePicker = () => {
-    if (!dueDate) return
-    return <DatePicker selected={date} onChange={handleDueDate} />
-  }
-
   return (
     <div className={styles['edit-todo']}>
       <div className={styles['edit-todo__top']}>
-        <div className={styles['edit-todo__date']}>{renderDatePicker()}</div>
+        <div className={styles['edit-todo__date']}>
+        <DatePicker selected={date} onChange={handleDueDate} />
+        </div>
         <div className={styles['edit-todo__options']}>
           <TrashIcon
             onClick={handleErase}

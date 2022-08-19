@@ -2,7 +2,6 @@ import jwtDecode from 'jwt-decode'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useRegisterMutation } from '../../../app/services/auth'
-import { GoogleIcon } from '../../../assets/icons'
 import {
   ModalContainer,
   ModalForm,
@@ -157,11 +156,6 @@ const SignUp = () => {
           isLoading={isLoading}
           variant="contained"
           value="Create account"
-        />
-        <ModalButton
-          variant="outlined"
-          value="Sign in with Google"
-          icon={<GoogleIcon />}
         />
       </ModalForm>
     </ModalContainer>

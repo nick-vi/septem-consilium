@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { GoogleIcon, SmileIcon } from '../../../assets/icons'
+import { SmileIcon } from '../../../assets/icons'
 import { inputValidation } from '../../../Constants'
 import { useDispatch } from 'react-redux'
 import { useCloseModal } from '../../../components/Modal/Modal'
@@ -175,11 +175,6 @@ const SignIn = () => {
           isLoading={isLoading}
           variant="contained"
           value="Let me in"
-        />
-        <ModalButton
-          variant="outlined"
-          value="Sign in with Google"
-          icon={<GoogleIcon />}
         />
         <ModalButton
           variant="outlined"

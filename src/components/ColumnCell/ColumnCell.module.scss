@@ -7,22 +7,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: grab;
+  cursor: pointer;
 
   &:hover &__toggle {
     opacity: 1;
     visibility: visible;
-  }
-
-  &--dragging {
-    opacity: 0;
-    height: 0;
-
-    background-color: red;
-
-    &:hover {
-      border: none;
-    }
   }
 
   &__toggle {

@@ -6,8 +6,6 @@ import {
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
-  MoonIcon,
-  SunIcon,
   HomeIcon,
   UserIcon
 } from '../../assets/icons'
@@ -33,10 +31,6 @@ const Toolbar = () => {
     })
   }, [distanceFromThisWeek])
 
-  const handleDarkMode = () => {
-    setDarkmodeBtn(!darkmodeBtn)
-  }
-
   const handleProfile = () => {
     user ? dispatch(showProfileModal()) : dispatch(showSignInModal())
   }
@@ -45,9 +39,6 @@ const Toolbar = () => {
     <div className={styles.toolbar}>
       <div className={styles.toolbar__profile} onClick={handleProfile}>
         <UserIcon />
-      </div>
-      <div className={styles['toolbar__theme-toggle']} onClick={handleDarkMode}>
-        {darkmodeBtn ? <SunIcon /> : <MoonIcon />}
       </div>
       <div
         className={cx({
