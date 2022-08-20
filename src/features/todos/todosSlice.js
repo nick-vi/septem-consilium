@@ -22,7 +22,7 @@ const templateState = [
   },
   {
     id: uuidv4(),
-    text: 'Drag to other day',
+    text: 'Drag and drop coming soon',
     dueDate: startOfWeek(new Date()).toISOString(),
     index: 0,
     isComplete: false,
