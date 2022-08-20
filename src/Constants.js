@@ -4,8 +4,6 @@ export const ItemTypes = {
   TODO: 'todo'
 }
 
-export const googleClientId = '334317054078-1kofspbfihvahstgvc6kds3jrmc1nq2p.apps.googleusercontent.com'
-
 export const weekColumnsClassNames = [
   'column__sun',
   'column__mon',

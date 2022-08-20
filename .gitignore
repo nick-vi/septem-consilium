@@ -20,7 +20,7 @@
 .eslintrc.js
 .prettierrc.json
 .prettierignore
-TODO.md
+
 
 npm-debug.log*
 yarn-debug.log*
