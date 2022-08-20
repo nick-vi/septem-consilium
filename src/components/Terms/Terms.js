@@ -34,20 +34,14 @@ const Terms = () => {
         The app collects nothing except the information you provide, such as
         email address, name, password, and the todos you insert.
         <br />
-        The app is for experimental and educational purposes but fully
-        functional, and you can use it to plan your week. <br />
+        The app is for experimental and educational purposes but is
+        usable, and you can use it to plan your week if you like. <br />
         If for some reason, you want to stop using the app, you can delete your
-        account and information anytime in the profile window and export your
-        todos in a CSV file for future reference. <br />
-        However, after 24 months of inactivity, the account will self-destruct
-        and everything associated with it.
-        <br />
-        <br />
+        account and information anytime in the profile modal. <br />
         <a href="https://tweek.so/" target="_blank" rel="noreferrer">
           Tweek
         </a>{' '}
-        heavily inspires the app, so if you want to experience the original, you
-        can go there and support their project.
+        heavily inspires the app, so if you like this project I suggest you to go and check the their app.
       </ModalTypography>
     </ModalContainer>
   )
