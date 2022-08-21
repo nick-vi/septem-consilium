@@ -7,7 +7,7 @@ import './App.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { RenderModal } from './components/Modal'
 import { selectCurrentUser } from './features/auth/authSlice'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useCreateInitialTodosMutation, useLazyGetTodosQuery } from './app/services/todos'
 import { selectDistanceFromThisWeek } from './features/date/dateSlice'
 import { updateTodos, loadState, selectTodos } from './features/todos/todosSlice'
@@ -15,17 +15,32 @@ import useNavigation from './hooks/useNavigation'
 import pick from 'just-pick'
 import compare from 'just-compare'
 import { normalizeData } from './utils/data'
+import ModalOverlay from './components/ModalOverlay'
+import NoConnection from './components/NoConnection'
 
 function App () {
   const { modal } = useSelector((state) => state)
   const user = useSelector(selectCurrentUser)
   const distanceFromThisWeek = useSelector(selectDistanceFromThisWeek)
   const todos = useSelector(selectTodos)
+  const [hasInternet, setHasInternet] = useState(navigator.onLine)
+  const [reconnected, setReconnected] = useState(navigator.onLine)
   const dispatch = useDispatch()
   const { resetWeek } = useNavigation()
 
   const [getTodos] = useLazyGetTodosQuery()
   const [createInitialTodos] = useCreateInitialTodosMutation()
+
+  useEffect(() => {
+    window.addEventListener('offline', () => {
+      setHasInternet(false)
+      setReconnected(false)
+    })
+    window.addEventListener('online', () => {
+      setTimeout(() => setHasInternet(true), 200)
+      setReconnected(true)
+    })
+  }, [])
 
   useEffect(() => {
     if (!user) return
@@ -60,7 +75,7 @@ function App () {
     getUserTodos()
   }, [distanceFromThisWeek])
 
-  return (
+  const renderApp = () => (
     <div className="App">
       <WeekView>
         <Header>
@@ -71,8 +86,16 @@ function App () {
         <DraftsColumns />
       </WeekView>
       <RenderModal modal={modal} />
+      {!hasInternet &&
+        <>
+          <ModalOverlay onDismount={reconnected} />
+          <NoConnection />
+        </>
+      }
     </div>
   )
+
+  return renderApp()
 }
 
 export default App

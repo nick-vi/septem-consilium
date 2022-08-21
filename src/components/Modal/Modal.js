@@ -6,6 +6,7 @@ import { SignUpModal } from '../../features/auth/SignUp'
 import { EditTodoModal } from '../EditTodo'
 import { ProfileModal } from '../../features/auth/Profile'
 import { TermsModal } from '../Terms'
+import ModalOverlay from '../ModalOverlay'
 
 const cx = classNames.bind(styles)
 
@@ -59,15 +60,11 @@ const Modal = ({ open, onClose, onCloseSideEffect, children }) => {
 
   return (
     <ModalContext.Provider value={handleDismount}>
-      <div
-        className={cx({
-          modal__overlay: true,
-          'modal__overlay--dismount': dismount
-        })}
-        onClick={handleDismount}
-        onKeyDown={handleKeyDown}
+      <ModalOverlay
+          onDismount={dismount}
+          onClick={handleDismount}
+          onKeyDown={handleKeyDown}
       />
-
       <div
         className={cx({
           modal: true,

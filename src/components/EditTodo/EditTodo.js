@@ -77,6 +77,16 @@ const EditTodo = ({
 
   const colors = [...Array(6).keys()]
 
+  const renderDatePicker = (date) => {
+    return (
+      <DatePicker
+        selected={date}
+        onChange={handleDueDate}
+        placeholder={date || 'Assign a date'}
+      />
+    )
+  }
+
   const renderColorOptions = () =>
     colors.map((color) => {
       const classNameStyles = {}
@@ -99,7 +109,7 @@ const EditTodo = ({
     <div className={styles['edit-todo']}>
       <div className={styles['edit-todo__top']}>
         <div className={styles['edit-todo__date']}>
-        <DatePicker selected={date} onChange={handleDueDate} />
+          {renderDatePicker(date)}
         </div>
         <div className={styles['edit-todo__options']}>
           <TrashIcon

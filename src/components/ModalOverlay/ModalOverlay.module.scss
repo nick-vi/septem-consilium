@@ -1,0 +1,34 @@
+.modal__overlay {
+  position: fixed;
+  inset: 0;
+  background-color: white;
+  opacity: 0.7;
+  z-index: 1000;
+
+  animation-name: overlay-mount;
+  animation-duration: 400ms;
+  animation-fill-mode: forwards;
+
+  &--dismount {
+    animation-name: overlay-dismount;
+  }
+}
+
+@keyframes overlay-mount {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes overlay-dismount {
+  0% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+  }
+}

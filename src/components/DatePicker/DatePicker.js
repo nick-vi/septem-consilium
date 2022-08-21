@@ -7,12 +7,12 @@ import styles from './DatePicker.module.scss'
 
 const DATE_FORMAT = 'EEE, MMM d yyyy'
 
-const DatePicker = ({ ...props }) => {
-  const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+const DatePicker = ({ placeholder, ...props }) => {
+  const CustomInput = forwardRef(({ value, onClick }, ref) => (
     <div ref={ref}>
       <CalendarIcon className={styles['date-picker__icon']} onClick={onClick} />
       <span className={styles['date-picker__text']} onClick={onClick}>
-        {value}
+        {typeof placeholder === 'string' ? placeholder : value}
       </span>
     </div>
   ))
@@ -20,7 +20,7 @@ const DatePicker = ({ ...props }) => {
     <ReactDatePicker
       dateFormat={DATE_FORMAT}
       wrapperClassName={styles['date-picker']}
-      customInput={<ExampleCustomInput />}
+      customInput={<CustomInput />}
       showPopperArrow={false}
       {...props}
     />

@@ -89,9 +89,8 @@ export const todosSlice = createSlice({
     },
     updateTodo: (state, action) => {
       const { todoId, ...props } = action.payload
-      props.dueDate
-        ? delete state[todoId].dueDate
-        : delete state[todoId].column
+      if (props.dueDate) delete state[todoId].column
+      if (props.column) delete state[todoId].dueDate
       state[todoId] = { ...state[todoId], ...props }
     }
   }
