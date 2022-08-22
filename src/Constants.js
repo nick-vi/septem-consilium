@@ -1,4 +1,5 @@
 export const endpointUrl = 'https://septem-consilium.herokuapp.com/'
+// export const endpointUrl = 'http://localhost:3030/'
 
 export const ItemTypes = {
   TODO: 'todo'
