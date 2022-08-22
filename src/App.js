@@ -6,7 +6,7 @@ import WeekView from './components/WeekView'
 import './App.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { RenderModal } from './components/Modal'
-import { selectCurrentUser } from './features/auth/authSlice'
+import { selectCurrentUser, setCredentials } from './features/auth/authSlice'
 import { useEffect, useState } from 'react'
 import { useCreateInitialTodosMutation, useLazyGetTodosQuery } from './app/services/todos'
 import { selectDistanceFromThisWeek } from './features/date/dateSlice'
@@ -17,6 +17,21 @@ import compare from 'just-compare'
 import { normalizeData } from './utils/data'
 import ModalOverlay from './components/ModalOverlay'
 import NoConnection from './components/NoConnection'
+import jwtDecode from 'jwt-decode'
+import { useLazyGetUserByTokenQuery } from './app/services/auth'
+
+const verifyLocalStorageToken = async (token, getUserByToken, dispatch) => {
+  const { sub: userId } = jwtDecode(token)
+  try {
+    return await getUserByToken({ id: userId, token })
+      .unwrap()
+      .then(async (data) => dispatch(setCredentials({ user: data, token })))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+const tokenFromLocalStorage = localStorage.getItem('token')
 
 function App () {
   const { modal } = useSelector((state) => state)
@@ -29,7 +44,18 @@ function App () {
   const { resetWeek } = useNavigation()
 
   const [getTodos] = useLazyGetTodosQuery()
+  const [getUserByToken] = useLazyGetUserByTokenQuery()
   const [createInitialTodos] = useCreateInitialTodosMutation()
+
+  useEffect(() => {
+    if (tokenFromLocalStorage && typeof tokenFromLocalStorage !== 'undefined') {
+      verifyLocalStorageToken(
+        tokenFromLocalStorage,
+        getUserByToken,
+        dispatch
+      )
+    }
+  }, [])
 
   useEffect(() => {
     window.addEventListener('offline', () => {
