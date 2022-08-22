@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/septem-consilium/static/css/main.b5f87be0.css",
-    "main.js": "/septem-consilium/static/js/main.0ab130d8.js",
+    "main.js": "/septem-consilium/static/js/main.c51d295c.js",
     "index.html": "/septem-consilium/index.html",
     "main.b5f87be0.css.map": "/septem-consilium/static/css/main.b5f87be0.css.map",
-    "main.0ab130d8.js.map": "/septem-consilium/static/js/main.0ab130d8.js.map"
+    "main.c51d295c.js.map": "/septem-consilium/static/js/main.c51d295c.js.map"
   },
   "entrypoints": [
     "static/css/main.b5f87be0.css",
-    "static/js/main.0ab130d8.js"
+    "static/js/main.c51d295c.js"
   ]
 }
