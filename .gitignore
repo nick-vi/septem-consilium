@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 
+/src/Constants.js
+
 # testing
 /coverage
 

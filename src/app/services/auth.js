@@ -51,6 +51,15 @@ export const authApi = createApi({
           body: { password }
         }
       }
+    }),
+    getUserByToken: builder.query({
+      query: (data) => {
+        const { id, token } = data
+        return ({
+          url: 'users/' + id,
+          params: { token }
+        })
+      }
     })
   })
 })
@@ -60,5 +69,6 @@ export const {
   useLogoutMutation,
   useRegisterMutation,
   useUpdateUserMutation,
-  useDeleteUserMutation
+  useDeleteUserMutation,
+  useLazyGetUserByTokenQuery
 } = authApi
