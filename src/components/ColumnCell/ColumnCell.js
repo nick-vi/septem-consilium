@@ -12,24 +12,17 @@ import { ItemTypes } from '../../Constants'
 
 const cx = classNames.bind(styles)
 
-const ColumnCell = ({ todoId, moveTodo }) => {
-  const { text, isComplete, bgColor, updatedAt, createdAt, index } = useSelector(getTodoById(todoId))
+const ColumnCell = ({ todoId }) => {
+  const { text, isComplete, bgColor } = useSelector(getTodoById(todoId))
   const user = useSelector(selectCurrentUser)
   const dispatch = useDispatch()
   const [updateTodoServer] = useUpdateTodoMutation()
 
   const ref = useRef(null)
 
-  const [{ handlerId }, drop] = useDrop({
-    accept: ItemTypes.TODO,
-    collect (monitor) {
-      return {
-        handlerId: monitor.getHandlerId()
-      }
-    }
-  })
+  const [, drop] = useDrop({ accept: ItemTypes.TODO })
 
-  const [{ isDragging }, drag] = useDrag(() => ({
+  const [, drag] = useDrag(() => ({
     type: ItemTypes.TODO,
     item: { todoId },
     collect: (monitor) => ({
