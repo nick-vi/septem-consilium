@@ -9,6 +9,11 @@
   align-items: center;
   cursor: grab;
 
+  &__dragging {
+    opacity: 0;
+    height: 0px;
+  }
+
   &:hover &__toggle {
     opacity: 1;
     visibility: visible;
