@@ -8,6 +8,8 @@ const templateState = [
     id: uuidv4(),
     text: 'Hover to complete',
     dueDate: startOfWeek(new Date()).toISOString(),
+    updatedAt: new Date().toISOString(),
+    createdAt: new Date().toISOString(),
     index: 0,
     isComplete: false,
     bgColor: 0
@@ -16,7 +18,9 @@ const templateState = [
     id: uuidv4(),
     text: 'Click to edit',
     dueDate: startOfWeek(new Date()).toISOString(),
-    index: 0,
+    updatedAt: new Date().toISOString(),
+    createdAt: new Date().toISOString(),
+    index: 1,
     isComplete: false,
     bgColor: 0
   },
@@ -24,7 +28,9 @@ const templateState = [
     id: uuidv4(),
     text: 'Drag and drop coming soon',
     dueDate: startOfWeek(new Date()).toISOString(),
-    index: 0,
+    updatedAt: new Date().toISOString(),
+    createdAt: new Date().toISOString(),
+    index: 2,
     isComplete: false,
     bgColor: 0
   },
@@ -32,7 +38,9 @@ const templateState = [
     id: uuidv4(),
     text: 'Choose from colors',
     dueDate: addDays(startOfWeek(new Date()), 1).toISOString(),
-    index: 0,
+    updatedAt: new Date().toISOString(),
+    createdAt: new Date().toISOString(),
+    index: 3,
     isComplete: false,
     bgColor: 1
   },
@@ -40,7 +48,9 @@ const templateState = [
     id: uuidv4(),
     text: 'Hope you like 😉',
     dueDate: addDays(startOfWeek(new Date()), 1).toISOString(),
-    index: 0,
+    updatedAt: new Date().toISOString(),
+    createdAt: new Date().toISOString(),
+    index: 4,
     isComplete: false,
     bgColor: 0
   },
@@ -48,7 +58,9 @@ const templateState = [
     id: uuidv4(),
     text: "That's it",
     dueDate: addDays(startOfWeek(new Date()), 2).toISOString(),
-    index: 0,
+    updatedAt: new Date().toISOString(),
+    createdAt: new Date().toISOString(),
+    index: 5,
     isComplete: false,
     bgColor: 5
   },
@@ -56,15 +68,19 @@ const templateState = [
     id: uuidv4(),
     text: 'Remember to save 👆🏾',
     dueDate: addDays(startOfWeek(new Date()), 5).toISOString(),
-    index: 1,
+    updatedAt: new Date().toISOString(),
+    createdAt: new Date().toISOString(),
+    index: 6,
     isComplete: false,
     bgColor: 0
   },
   {
     id: uuidv4(),
     text: 'Not sure what day',
+    updatedAt: new Date().toISOString(),
+    createdAt: new Date().toISOString(),
     column: 1,
-    index: 0,
+    index: 7,
     isComplete: false,
     bgColor: 0
   }
@@ -97,6 +113,14 @@ export const todosSlice = createSlice({
 })
 
 export const getTodoById = (todoId) => (state) => state.todos[todoId]
+export const getTodosWithArray = (todoIds) => (state) => {
+  const columnTodos = {}
+  Object.keys(state.todos)
+    .filter(todoId => todoIds.includes(todoId))
+    .forEach((todoId) => { columnTodos[todoId] = state.todos[todoId] })
+
+  return columnTodos
+}
 export const getWeekTodos = (state) => Object.values(state.todos).filter(todo => todo.dueDate)
 export const selectColumnTodos = (state) => Object.values(state.todos).filter(todo => todo.column !== undefined)
 export const selectTodos = (state) => state.todos

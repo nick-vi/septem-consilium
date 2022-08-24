@@ -15,7 +15,7 @@ export const EditTodoModal = () => {
     useSelector(getTodoById(todoId)) || {}
   const [hasChanged, setHasChanged] = useState(false)
   const user = useSelector(selectCurrentUser)
-  const [updateTodo] = useUpdateTodoMutation()
+  const [updateTodoServer] = useUpdateTodoMutation()
 
   const dispatch = useDispatch()
 
@@ -24,7 +24,7 @@ export const EditTodoModal = () => {
   }
 
   const onCloseSideEffect = async () => {
-    if (user && hasChanged) await updateTodo({ userId: user.userId, todoId, text, dueDate, bgColor, isComplete })
+    if (user && hasChanged) await updateTodoServer({ userId: user.userId, todoId, text, dueDate, bgColor, isComplete })
   }
 
   return (

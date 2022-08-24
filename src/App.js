@@ -16,7 +16,7 @@ import pick from 'just-pick'
 import compare from 'just-compare'
 import { normalizeData } from './utils/data'
 import ModalOverlay from './components/ModalOverlay'
-import NoConnection from './components/NoConnection'
+import ModalLoadingText from './components/ModalLoadingText'
 import jwtDecode from 'jwt-decode'
 import { useLazyGetUserByTokenQuery } from './app/services/auth'
 
@@ -115,7 +115,7 @@ function App () {
       {!hasInternet &&
         <>
           <ModalOverlay onDismount={reconnected} />
-          <NoConnection />
+          <ModalLoadingText text="No Connection"/>
         </>
       }
     </div>
