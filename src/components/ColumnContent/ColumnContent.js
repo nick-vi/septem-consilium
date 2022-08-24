@@ -43,7 +43,7 @@ const ColumnContent = ({
           updateTodoServer(payload)
         }
 
-        if (payload.updatedAt === undefined) payload.updatedAt = new Date().toISOString()
+        payload.updatedAt = new Date().toISOString()
 
         return dispatch(updateTodo(payload))
       }
