@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { useDrop } from 'react-dnd'
 import { useSelector, useDispatch } from 'react-redux'
 import { ItemTypes } from '../../Constants'
-import { updateTodo } from '../../features/todos/todosSlice'
+import { getTodosWithArray, updateTodo } from '../../features/todos/todosSlice'
 import styles from './ColumnContent.module.scss'
 import ColumnCell from '../ColumnCell'
 import ColumnTextField from '../ColumnTextField'
@@ -19,6 +19,7 @@ const ColumnContent = ({
   const distanceFromThisWeek = useSelector(selectDistanceFromThisWeek)
   const inputRef = useRef()
   const user = useSelector(selectCurrentUser)
+  const todos = useSelector(getTodosWithArray(todoIds))
 
   const dispatch = useDispatch()
   const [updateTodoServer] = useUpdateTodoMutation()
@@ -27,22 +28,24 @@ const ColumnContent = ({
     () => ({
       accept: ItemTypes.TODO,
       drop: async ({ todoId }) => {
-        if (columnDate === undefined) {
-          const payload = { todoId, column: columnIndex, dueDate: undefined }
-          if (user) {
-            payload.userId = user.userId
-            const { data } = await updateTodoServer(payload)
-            payload.updatedAt = data.updatedAt
-          }
+        const payload = { todoId }
 
-          return dispatch(updateTodo(payload))
+        if (columnDate === undefined) {
+          payload.dueDate = undefined
+          payload.column = columnIndex
+        } else {
+          payload.dueDate = columnDate
+          payload.column = undefined
         }
-        const payload = { todoId, dueDate: columnDate, column: undefined }
+
         if (user) {
           payload.userId = user.userId
           const { data } = await updateTodoServer(payload)
           payload.updatedAt = data.updatedAt
         }
+
+        if (payload.updatedAt === undefined) payload.updatedAt = new Date().toISOString()
+
         return dispatch(updateTodo(payload))
       },
       collect: (monitor) => ({
@@ -60,13 +63,12 @@ const ColumnContent = ({
   const inputFocus = () => inputRef.current.focus()
 
   const renderTodos = () =>
-    todoIds
-      .sort(
-        (objA, objB) =>
-          Number(new Date(objB.updatedAt)) - Number(new Date(objA.updatedAt))
-      )
-      .map((todoId) => {
-        return <ColumnCell key={todoId} todoId={todoId} />
+    Object.values(todos)
+      .sort((a, b) => {
+        return (a.updatedAt < b.updatedAt) ? -1 : ((a.updatedAt > b.date) ? 1 : 0)
+      })
+      .map((todo) => {
+        return <ColumnCell key={todo.id} todoId={todo.id} />
       })
 
   return (
