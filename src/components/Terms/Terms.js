@@ -38,10 +38,6 @@ const Terms = () => {
         usable, and you can use it to plan your week if you like. <br />
         If for some reason, you want to stop using the app, you can delete your
         account and information anytime in the profile modal. <br />
-        <a href="https://tweek.so/" target="_blank" rel="noreferrer">
-          Tweek
-        </a>{' '}
-        heavily inspires the app, so if you like this project I suggest you to go and check the their app.
       </ModalTypography>
     </ModalContainer>
   )

@@ -166,9 +166,7 @@ const SignIn = () => {
         {alert?.message && (
           <ModalAlert variant={alert.type} text={alert.message} icon />
         )}
-        <ModalTypography small right onClick={handleForgotPassword}>
-          <span>Forgot password?</span>
-        </ModalTypography>
+        <ModalTypography small right />
         <ModalButton
           type="submit"
           onClick={handleSubmit}
