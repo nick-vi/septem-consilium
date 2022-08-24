@@ -40,17 +40,13 @@ const ColumnContent = ({
 
         if (user) {
           payload.userId = user.userId
-          const { data } = await updateTodoServer(payload)
-          payload.updatedAt = data.updatedAt
+          updateTodoServer(payload)
         }
 
         if (payload.updatedAt === undefined) payload.updatedAt = new Date().toISOString()
 
         return dispatch(updateTodo(payload))
-      },
-      collect: (monitor) => ({
-        isOver: !!monitor.isOver()
-      })
+      }
     }),
     [distanceFromThisWeek, user]
   )
