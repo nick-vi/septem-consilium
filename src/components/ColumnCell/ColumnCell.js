@@ -22,7 +22,7 @@ const ColumnCell = ({ todoId }) => {
 
   const [, drop] = useDrop({ accept: ItemTypes.TODO })
 
-  const [{ isDragging }, drag] = useDrag(() => ({
+  const [{ isDragging }, drag, preview] = useDrag(() => ({
     type: ItemTypes.TODO,
     item: { todoId },
     collect: (monitor) => ({
@@ -58,6 +58,7 @@ const ColumnCell = ({ todoId }) => {
 
   return (
     <div
+      ref={ref}
       className={cx({
         cell: true,
         cell__dragging: isDragging
@@ -65,7 +66,7 @@ const ColumnCell = ({ todoId }) => {
       onClick={handleOpen}
     >
       <div
-        ref={ref}
+        ref={preview}
         className={cx({
           cell__text: true,
           cell__text__complete: isComplete,
